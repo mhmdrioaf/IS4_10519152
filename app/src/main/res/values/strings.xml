@@ -16,4 +16,5 @@
     <string name="delete">Delete</string>
     <string name="delete_success"> deleted!</string>
     <string name="delete_failed">Unable to delete the contact!</string>
+    <string name="empty_contact">No contacts yet…</string>
 </resources>

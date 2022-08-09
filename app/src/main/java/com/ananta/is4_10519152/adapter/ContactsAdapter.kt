@@ -5,15 +5,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ananta.is4_10519152.R
-import com.ananta.is4_10519152.data.Contacts
+import com.ananta.is4_10519152.dao.ContactEntity
+import com.ananta.is4_10519152.helper.ContactDiffCallback
 
-class ContactsAdapter(
-    private val arrayList: ArrayList<Contacts.Contact>,
+class ContactsAdapter internal constructor(
     private val listener: OnAdapterListener,
-    ): RecyclerView.Adapter<ContactsAdapter.Holder>() {
-    class Holder(val view: View) : RecyclerView.ViewHolder(view) {
+) : RecyclerView.Adapter<ContactsAdapter.Holder>() {
+    private val listContacts = ArrayList<ContactEntity>()
+
+    fun setListContacts(listContacts: List<ContactEntity>) {
+        val diffCallback = ContactDiffCallback(this.listContacts, listContacts)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        this.listContacts.clear()
+        this.listContacts.addAll(listContacts)
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+
+    class Holder(view: View) : RecyclerView.ViewHolder(view) {
         val tvName: TextView = view.findViewById(R.id.tv_contact_name)
         val cvList: CardView = view.findViewById(R.id.cv_list)
     }
@@ -25,23 +38,27 @@ class ContactsAdapter(
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val contact = arrayList[position]
-        holder.tvName.text = contact.contact_name
+        val contact = listContacts[position]
+        holder.tvName.text = contact.contactName
 
         holder.cvList.setOnClickListener {
-            listener.onClick( contact )
+            listener.onClick(contact)
         }
     }
 
-    override fun getItemCount(): Int = arrayList.size
+    override fun getItemCount(): Int = listContacts.size
+/*
+
+This function is for the MySQL database use
 
     fun setData(data: List<Contacts.Contact>) {
         arrayList.clear()
         arrayList.addAll(data)
         notifyDataSetChanged()
     }
+ */
 
     interface OnAdapterListener {
-        fun onClick(contact: Contacts.Contact)
+        fun onClick(contact: ContactEntity)
     }
 }
