@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">IS4_10519152</string>
+    <string name="fab_content_desc">adding contact</string>
+    <string name="insert_name">Contact name</string>
+    <string name="insert_number">Contact number</string>
+    <string name="save">Save</string>
+    <string name="contact">Contact</string>
+    <string name="add_contact">Insert new contact</string>
+
+    <string name="empty_input">Please fill the required fields!</string>
+    <string name="add_success"> added!</string>
+    <string name="add_failed">Failed to insert new contact.</string>
+    <string name="edit">Edit</string>
+    <string name="update_success">Contact data updated!</string>
+    <string name="update_failed">Contact data failed to update.</string>
+    <string name="delete">Delete</string>
+    <string name="delete_success"> deleted!</string>
+    <string name="delete_failed">Unable to delete the contact!</string>
+</resources>
