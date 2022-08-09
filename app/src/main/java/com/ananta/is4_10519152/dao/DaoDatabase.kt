@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [ContactEntity::class], version = 1)
-abstract class DaoDatabase: RoomDatabase() {
+abstract class DaoDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao
 
     companion object {
@@ -17,8 +17,10 @@ abstract class DaoDatabase: RoomDatabase() {
         fun getDatabase(context: Context): DaoDatabase {
             if (INSTANCE == null) {
                 synchronized(DaoDatabase::class.java) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-                    DaoDatabase::class.java, "contact_database")
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
+                        DaoDatabase::class.java, "contact_database"
+                    )
                         .build()
                 }
             }

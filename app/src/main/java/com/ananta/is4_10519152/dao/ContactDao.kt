@@ -9,7 +9,7 @@ interface ContactDao {
     fun getAll(): LiveData<List<ContactEntity>>
 
     @Query("SELECT * FROM contacts WHERE contact_name LIKE :name LIMIT 1")
-    fun findByName(name: String): ContactEntity
+    fun findByName(name: String?): LiveData<List<ContactEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(contacts: ContactEntity)

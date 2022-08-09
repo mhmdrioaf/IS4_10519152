@@ -10,4 +10,5 @@ class MainViewModel(application: Application) : ViewModel() {
     private val mContactRepository: ContactRepository = ContactRepository(application)
 
     fun getAllContacts(): LiveData<List<ContactEntity>> = mContactRepository.getAllContacts()
+
 }

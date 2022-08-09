@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.ananta.is4_10519152.dao.ContactEntity
 import com.ananta.is4_10519152.repository.ContactRepository
 
-class ContactAddUpdateViewModel(application: Application): ViewModel() {
+class ContactAddUpdateViewModel(application: Application) : ViewModel() {
     private val mContactRepository: ContactRepository = ContactRepository(application)
 
     fun insert(contact: ContactEntity) {

@@ -3,7 +3,10 @@ package com.ananta.is4_10519152.helper
 import androidx.recyclerview.widget.DiffUtil
 import com.ananta.is4_10519152.dao.ContactEntity
 
-class ContactDiffCallback(private val mOldContactList: List<ContactEntity>, private val mNewContactList: List<ContactEntity>): DiffUtil.Callback() {
+class ContactDiffCallback(
+    private val mOldContactList: List<ContactEntity>,
+    private val mNewContactList: List<ContactEntity>
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return mOldContactList.size
     }

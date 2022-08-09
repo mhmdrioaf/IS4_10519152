@@ -99,7 +99,11 @@ class InsertActivity : AppCompatActivity() {
                     contact?.contactName = name
                     contact?.contactNumber = number
                     contactAddUpdateViewModel.insert(contact as ContactEntity)
-                    Toast.makeText(applicationContext, contact.contactName + " " + resources.getString(R.string.add_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        applicationContext,
+                        contact.contactName + " " + resources.getString(R.string.add_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 }
             }

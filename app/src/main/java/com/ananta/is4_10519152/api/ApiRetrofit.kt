@@ -8,21 +8,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiRetrofit {
 
     val endpoint: ApiEndPoint
-    get() {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        get() {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
+            val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.100.33/is4_10519152/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl("http://192.168.100.33/is4_10519152/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
 
-        return retrofit.create(ApiEndPoint::class.java)
-    }
+            return retrofit.create(ApiEndPoint::class.java)
+        }
 
 }

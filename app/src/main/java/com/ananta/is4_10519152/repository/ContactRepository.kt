@@ -20,7 +20,7 @@ class ContactRepository(application: Application) {
     fun getAllContacts(): LiveData<List<ContactEntity>> = mContactDao.getAll()
 
     fun insert(contact: ContactEntity) {
-        executorService.execute{ mContactDao.insert(contact) }
+        executorService.execute { mContactDao.insert(contact) }
     }
 
     fun delete(contact: ContactEntity) {
@@ -28,6 +28,6 @@ class ContactRepository(application: Application) {
     }
 
     fun update(contact: ContactEntity) {
-        executorService.execute{ mContactDao.update(contact) }
+        executorService.execute { mContactDao.update(contact) }
     }
 }
